@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
+import { MobileNav } from "@/components/MobileNav";
 
 export const metadata: Metadata = {
   title: "FCOMS — Football Club Management",
   description: "Admin dashboard for the FCOMS football club platform",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#020617",
 };
 
 export default function RootLayout({
@@ -24,7 +31,10 @@ export default function RootLayout({
             <div className="absolute bottom-0 right-0 size-[500px] rounded-full bg-cyan-500/10 blur-3xl" />
           </div>
           <Sidebar />
-          <main className="flex min-w-0 flex-1 flex-col">{children}</main>
+          <div className="flex min-w-0 flex-1 flex-col">
+            <MobileNav />
+            <main className="flex flex-1 flex-col">{children}</main>
+          </div>
         </div>
       </body>
     </html>
